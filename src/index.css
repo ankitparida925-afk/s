@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-[#141414] text-zinc-100 font-sans overflow-x-hidden antialiased;
+    font-family: 'Outfit', 'Inter', sans-serif;
+  }
+
+  /* Custom Romantic Font Utility */
+  .font-romantic {
+    font-family: 'Great Vibes', 'Playfair Display', serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #141414;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(229, 9, 20, 0.4);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(229, 9, 20, 0.7);
+}
+
+/* Glassmorphism Presets */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-card-pink {
+  background: rgba(253, 164, 175, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(253, 164, 175, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(244, 63, 94, 0.2);
+}
+
+/* Custom Custom Cursor Glowing Ring */
+.custom-cursor-glow {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(244, 63, 94, 0.6);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+  z-index: 9999;
+}
+
+.custom-cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: rgb(244, 63, 94);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+
+/* Star Background Animation Canvas */
+.stars-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Floating Hearts & Rose Petals Animations */
+@keyframes heartFloatUp {
+  0% {
+    transform: translateY(100vh) scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-20vh) scale(1.2) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-floating-heart {
+  animation: heartFloatUp 12s linear infinite;
+}
+
+/* Sparkle animation for absolute decorative elements */
+.glowing-bg-circle {
+  filter: blur(120px);
+}
