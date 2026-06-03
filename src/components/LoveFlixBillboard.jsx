@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import { Play, Info, Heart, Star, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import galleryBg from '../assets/gallery_background.jpg';
 
 export default function LoveFlixBillboard({ onPlay }) {
   const [showDetails, setShowDetails] = useState(false);
 
   const featuredShow = {
-    title: "Our Love Story",
-    tagline: "The Best Adventure of My Life",
-    synopsis: "An award-winning real-life romantic saga detailing the beautiful journey of two souls bound by destiny, laughter, and an infinite amount of late-night conversations.",
+    title: "The Girl From My Upside Down",
+    tagline: "If life had an Upside Down, you'd be the light that always leads me back.",
+    synopsis: "If life had an Upside Down, you'd be the light that always leads me back.",
     match: "100% Match",
     year: "2026",
     duration: "1 Season",
     genres: ["Heartfelt", "Cinematic Romance", "Best comedy duo"],
     cast: ["You ❤️", "Me 💍"],
-    bannerUrl: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1200",
+    bannerUrl: galleryBg,
   };
+
 
   return (
     <div className="relative w-full h-[55vh] md:h-[80vh] flex flex-col justify-end overflow-hidden bg-slate-950">

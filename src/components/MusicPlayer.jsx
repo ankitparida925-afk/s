@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Volume2, VolumeX, Music, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import romanticTrack from '../assets/tere_naina.mp3';
+import romanticTrack from '../assets/back_to_friends.mp3';
 
 export default function MusicPlayer({ autoplayRequested, onMusicStart }) {
   const audioRef = useRef(null);

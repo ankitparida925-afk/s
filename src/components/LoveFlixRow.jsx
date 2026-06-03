@@ -64,11 +64,20 @@ export default function LoveFlixRow({ title, items, onPlay }) {
             >
               {/* Thumbnail Container */}
               <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-950">
-                <img
-                  src={item.url}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
+                {item.videoUrl ? (
+                  <video
+                    src={item.videoUrl}
+                    preload="metadata"
+                    muted
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                ) : (
+                  <img
+                    src={item.url}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                )}
                 
                 {/* Red Play progress bar at bottom of thumbnail */}
                 {item.progress && (

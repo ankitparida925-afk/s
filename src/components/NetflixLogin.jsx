@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import loginLogo from '../assets/login_logo.png';
+import loginBg from '../assets/login_background.png';
 
 export default function NetflixLogin({ onLoginSuccess }) {
   const [email, setEmail] = useState('simsim@love.com');
@@ -18,11 +20,11 @@ export default function NetflixLogin({ onLoginSuccess }) {
 
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center bg-black/60 select-none font-sans">
-      {/* Background with blurred couple memory grid overlay */}
+      {/* Background with blurred custom couple memory grid overlay */}
       <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center filter blur-[4px] opacity-40"
+        className="absolute inset-0 w-full h-full bg-cover bg-center filter blur-[1px] opacity-80"
         style={{ 
-          backgroundImage: `url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1200')` 
+          backgroundImage: `url(${loginBg})` 
         }}
       />
       {/* Deep overlay mask */}
@@ -36,9 +38,12 @@ export default function NetflixLogin({ onLoginSuccess }) {
         className="relative z-10 w-full max-w-[450px] p-8 md:p-16 bg-black/75 rounded-md border border-white/5 shadow-2xl flex flex-col justify-center"
       >
         <div className="flex justify-center mb-8">
-          <span className="text-[#E50914] font-normal text-4xl md:text-5xl tracking-wider font-bebas drop-shadow-[0_0_10px_rgba(229,9,20,0.4)]">
-            NETFLIX
-          </span>
+          <img 
+            src={loginLogo} 
+            alt="Netflix Logo" 
+            className="h-12 md:h-14 object-contain"
+            style={{ mixBlendMode: 'screen' }}
+          />
         </div>
 
         <h2 className="text-3xl font-bold text-white mb-7">Sign In</h2>

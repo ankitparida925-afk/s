@@ -10,96 +10,12 @@ import ProposalBox from './components/ProposalBox';
 import LoveFlix from './components/LoveFlix';
 import NetflixLogin from './components/NetflixLogin';
 import simsimProfile from './assets/simsim_profile.jpg';
+import netflixLogo from './assets/netflix_logo.png';
+import loginLogo from './assets/login_logo.png';
+import profilesBg from './assets/profiles_background.jpg';
+import netflixTudum from './assets/netflix_tudum.mp3';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Sparkles } from 'lucide-react';
-
-// Web Audio API Realistic Netflix "TUDUM" Sound Synthesizer
-const playTudum = () => {
-  try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) return;
-    const ctx = new AudioContext();
-    const now = ctx.currentTime;
-
-    // --- BEAT 1: "TU" (Thump at T=0) ---
-    const osc1 = ctx.createOscillator();
-    const gain1 = ctx.createGain();
-    const filter1 = ctx.createBiquadFilter();
-
-    osc1.type = 'sawtooth';
-    osc1.frequency.setValueAtTime(80, now); // 80 Hz Low thud
-    
-    filter1.type = 'lowpass';
-    filter1.frequency.setValueAtTime(140, now);
-
-    gain1.gain.setValueAtTime(0, now);
-    gain1.gain.linearRampToValueAtTime(0.7, now + 0.02);
-    gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
-
-    osc1.connect(filter1);
-    filter1.connect(gain1);
-    gain1.connect(ctx.destination);
-    
-    osc1.start(now);
-    osc1.stop(now + 0.18);
-
-    // --- BEAT 2: "DUM" (Heavy Drop at T=0.12) ---
-    const osc2 = ctx.createOscillator();
-    const gain2 = ctx.createGain();
-    const filter2 = ctx.createBiquadFilter();
-
-    osc2.type = 'sawtooth';
-    osc2.frequency.setValueAtTime(70, now + 0.12); // Deep chest thud
-    
-    filter2.type = 'lowpass';
-    filter2.frequency.setValueAtTime(110, now + 0.12);
-
-    gain2.gain.setValueAtTime(0, now + 0.12);
-    gain2.gain.linearRampToValueAtTime(0.95, now + 0.15);
-    gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.9);
-
-    osc2.connect(filter2);
-    filter2.connect(gain2);
-    gain2.connect(ctx.destination);
-    
-    osc2.start(now + 0.12);
-    osc2.stop(now + 0.9);
-
-    // --- THE METALLIC / CHORD SLIDE TAIL (T=0.15 to 1.8) ---
-    const osc3 = ctx.createOscillator();
-    const osc4 = ctx.createOscillator();
-    const gainShimmer = ctx.createGain();
-    const filterShimmer = ctx.createBiquadFilter();
-
-    osc3.type = 'sawtooth';
-    osc3.frequency.setValueAtTime(220, now + 0.15); // A3 base
-    osc3.frequency.exponentialRampToValueAtTime(440, now + 0.8); // Glides to A4
-
-    osc4.type = 'triangle';
-    osc4.frequency.setValueAtTime(329.63, now + 0.15); // E4 perfect fifth
-    osc4.frequency.exponentialRampToValueAtTime(659.25, now + 0.8); // Glides to E5
-
-    filterShimmer.type = 'highpass';
-    filterShimmer.frequency.setValueAtTime(280, now + 0.15);
-
-    gainShimmer.gain.setValueAtTime(0, now + 0.15);
-    gainShimmer.gain.linearRampToValueAtTime(0.22, now + 0.28);
-    gainShimmer.gain.exponentialRampToValueAtTime(0.001, now + 1.8);
-
-    osc3.connect(filterShimmer);
-    osc4.connect(filterShimmer);
-    filterShimmer.connect(gainShimmer);
-    gainShimmer.connect(ctx.destination);
-
-    osc3.start(now + 0.15);
-    osc3.stop(now + 1.8);
-    osc4.start(now + 0.15);
-    osc4.stop(now + 1.8);
-
-  } catch (error) {
-    console.error("Failed to play synthesized Tudum: ", error);
-  }
-};
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -109,12 +25,16 @@ export default function App() {
 
   const handleProfileSelect = (profile) => {
     setSelectedProfile(profile);
-    playTudum(); // Synthesize the iconic TUDUM sound immediately
     
-    // Smooth delay before starting soft background music track to let Tudum finish playing
-    setTimeout(() => {
-      setAutoplayMusic(true);
-    }, 1500);
+    // Play the official high-fidelity Netflix TUDUM sound effect
+    try {
+      const tudumAudio = new Audio(netflixTudum);
+      tudumAudio.volume = 0.85;
+      tudumAudio.play().catch(err => console.log("Official Tudum playback blocked:", err));
+    } catch (err) {
+      console.log("Audio constructor error:", err);
+    }
+    
   };
 
   const triggerMusicAutoplay = () => {
@@ -150,7 +70,7 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-slate-950 flex flex-col items-center justify-center p-6 select-none"
+            className="fixed inset-0 z-50 bg-black flex flex-col items-center justify-center p-6 select-none"
           >
             <motion.div
               initial={{ scale: 0.9, y: 15 }}
@@ -158,10 +78,15 @@ export default function App() {
               transition={{ duration: 0.6 }}
               className="text-center"
             >
-              {/* Cinematic Netflix Title */}
-              <h1 className="text-5xl md:text-7xl font-normal font-bebas tracking-wider text-white mb-12 flex items-center justify-center">
-                <span className="text-red-600 drop-shadow-[0_0_12px_rgba(220,38,38,0.7)]">Netflix</span>
-              </h1>
+              {/* Cinematic Replaced Logo */}
+              <div className="flex justify-center mb-12">
+                <img 
+                  src={loginLogo} 
+                  alt="Netflix Logo" 
+                  className="h-16 md:h-20 object-contain"
+                  style={{ mixBlendMode: 'screen' }}
+                />
+              </div>
               
               <h2 className="text-xl md:text-2xl font-bold text-zinc-300 mb-8">
                 Who's watching?
