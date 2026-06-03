@@ -45,6 +45,11 @@ const TRENDING_EPISODES = [
     duration: '1:45',
     progress: 0,
     match: '100% Match',
+    gallery: [
+      { type: 'video', url: trendingVid1, rotate: 270 },
+      { type: 'video', url: trendingVid2, rotate: 270 },
+      { type: 'video', url: fanFavoriteVideo }
+    ]
   },
   {
     id: 't7',
@@ -57,6 +62,11 @@ const TRENDING_EPISODES = [
     duration: '2:15',
     progress: 0,
     match: '99% Match',
+    gallery: [
+      { type: 'video', url: trendingVid1, rotate: 270 },
+      { type: 'video', url: trendingVid2, rotate: 270 },
+      { type: 'video', url: fanFavoriteVideo }
+    ]
   },
   {
     id: 't5',
@@ -68,6 +78,11 @@ const TRENDING_EPISODES = [
     duration: '2:30',
     progress: 0,
     match: '100% Match',
+    gallery: [
+      { type: 'video', url: trendingVid1, rotate: 270 },
+      { type: 'video', url: trendingVid2, rotate: 270 },
+      { type: 'video', url: fanFavoriteVideo }
+    ]
   },
   {
     id: 't4',
@@ -81,33 +96,6 @@ const TRENDING_EPISODES = [
     match: '100% Match',
   },
 
-  {
-    id: 't1',
-    title: 'The Sparkling First Meet ❤️',
-    desc: 'Two nervous smiles, a simple greeting, and a spark that illuminated the universe.',
-    url: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600',
-    duration: '2:15',
-    progress: 95,
-    match: '99% Match',
-  },
-  {
-    id: 't2',
-    title: 'Dancing In The Moonlight ✨',
-    desc: 'Whispered jokes, shared warmth, and a romantic starlit night where time completely stood still.',
-    url: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=600',
-    duration: '3:05',
-    progress: 88,
-    match: '98% Match',
-  },
-  {
-    id: 't3',
-    title: 'The Great Coffee Escape ☕',
-    desc: 'Cozy corners, holding hands in rainy afternoons, and dreaming of our futures over warm mugs.',
-    url: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=600',
-    duration: '1:45',
-    progress: 75,
-    match: '100% Match',
-  },
 ];
 
 const WHY_SHE_IS_AMAZING_EPISODES = [
