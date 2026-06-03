@@ -138,80 +138,18 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* DASHBOARD: Tab Switching System */}
+      {/* DASHBOARD: LoveFlix Video Hub */}
       {selectedProfile && (
-        <>
-          {activeTab === 'loveflix' ? (
-            /* Tab 1: LoveFlix Hub */
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
-            >
-              <LoveFlix 
-                partnerName={selectedProfile === 'love' ? 'Sim Sim' : 'Guest'} 
-                profileImage={selectedProfile === 'love' ? simsimProfile : null}
-                onNavigateToProposal={() => setActiveTab('proposal')}
-              />
-            </motion.div>
-          ) : (
-            /* Tab 2: Proposal Letter & Love Journey Hub */
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="flex flex-col min-h-screen"
-            >
-              {/* Back to LoveFlix Nav Bar */}
-              <div className="relative z-20 w-full h-16 bg-slate-950/60 backdrop-blur-md border-b border-white/5 flex items-center justify-between px-6 md:px-16">
-                <div className="flex items-center cursor-pointer" onClick={() => setActiveTab('loveflix')}>
-                  <span className="text-red-600 font-normal text-2xl tracking-wider font-bebas">
-                    Netflix
-                  </span>
-                </div>
-
-                <motion.button
-                  onClick={() => setActiveTab('loveflix')}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-lg border border-red-500/20 shadow-md transition-colors flex items-center gap-1.5"
-                >
-                  <Play className="w-3 h-3 fill-current" />
-                  <span>Back to Video Hub</span>
-                </motion.button>
-              </div>
-
-              {/* Proposal Letter main blocks */}
-              <main className="relative z-10 w-full flex-grow flex flex-col gap-12 pb-16 pt-6">
-                
-                {/* Typewriter Hero Card */}
-                <Hero />
-
-                {/* Live Love Countdown Timer */}
-                <Countdown />
-
-                {/* Reasons why I love you */}
-                <ReasonsList />
-
-                {/* Memory Grid Carousel */}
-                <Gallery />
-
-                {/* Will You Be Mine Interactive Box */}
-                <div onClick={triggerMusicAutoplay}>
-                  <ProposalBox />
-                </div>
-              </main>
-
-              {/* Footer bar */}
-              <footer className="relative z-10 w-full py-8 text-center text-rose-300/40 text-sm md:text-base tracking-widest font-semibold border-t border-white/5 bg-slate-950/40 backdrop-blur-md">
-                <p className="flex items-center justify-center gap-2">
-                  <span>Made with endless love</span>
-                  <span className="text-rose-500 animate-pulse text-lg">❤️</span>
-                </p>
-              </footer>
-            </motion.div>
-          )}
-        </>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <LoveFlix 
+            partnerName={selectedProfile === 'love' ? 'Sim Sim' : 'Guest'} 
+            profileImage={selectedProfile === 'love' ? simsimProfile : null}
+          />
+        </motion.div>
       )}
 
     </div>

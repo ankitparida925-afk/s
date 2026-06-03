@@ -29,6 +29,9 @@ import unexplainedVid2 from '../assets/unexplained_vid2.mp4';
 import unexplainedVid3 from '../assets/unexplained_vid3.mp4';
 import trendingVid1 from '../assets/trending_vid1.mp4';
 import trendingVid2 from '../assets/trending_vid2.mp4';
+import lostEyesImg from '../assets/lost_eyes.jpeg';
+import tereNainaMusic from '../assets/tere_naina.mp3';
+import tinkuJiyaMusic from '../assets/tinku_jiya.mp3';
 
 const TRENDING_EPISODES = [
   {
@@ -360,6 +363,19 @@ const THE_UNEXPLAINED_PHENOMENA_EPISODES = [
   }
 ];
 
+const LOST_IN_HER_EYES_EPISODES = [
+  {
+    id: 'lost_eyes1',
+    title: 'Lost in Her Eyes...',
+    desc: 'The world disappears whenever I look at you. Capturing a timeless gaze of beauty and devotion.',
+    url: lostEyesImg,
+    bgMusic: tereNainaMusic,
+    duration: '1:00',
+    progress: 0,
+    match: '100% Match',
+  }
+];
+
 export default function LoveFlix({ partnerName, profileImage, onNavigateToProposal }) {
   const [activeEpisode, setActiveEpisode] = useState(null);
   
@@ -412,6 +428,11 @@ export default function LoveFlix({ partnerName, profileImage, onNavigateToPropos
         ...episode,
         gallery: souGallery,
         bgMusic: beMyBabyMusic
+      });
+    } else if (episode && episode.id && episode.id.toString().startsWith('up')) {
+      setActiveEpisode({
+        ...episode,
+        bgMusic: tinkuJiyaMusic
       });
     } else {
       setActiveEpisode(episode);
@@ -482,12 +503,7 @@ export default function LoveFlix({ partnerName, profileImage, onNavigateToPropos
             <span className="hover:text-zinc-400 cursor-pointer transition-colors">Movies</span>
             <span className="hover:text-zinc-400 cursor-pointer transition-colors">New & Popular</span>
             <span className="hover:text-zinc-400 cursor-pointer transition-colors">My List</span>
-            <span 
-              onClick={onNavigateToProposal}
-              className="hover:text-zinc-400 cursor-pointer transition-colors"
-            >
-              Proposal Hub
-            </span>
+
             <span 
               onClick={() => setIsModalOpen(true)}
               className="hover:text-red-500 cursor-pointer font-bold text-red-500 transition-colors flex items-center gap-1"
@@ -556,6 +572,11 @@ export default function LoveFlix({ partnerName, profileImage, onNavigateToPropos
           <LoveFlixRow 
             title="Season of Us 💖" 
             items={seasonOfUsEpisodes} 
+            onPlay={handlePlayEpisode} 
+          />
+          <LoveFlixRow 
+            title="Lost in Her Eyes... 💖" 
+            items={LOST_IN_HER_EYES_EPISODES} 
             onPlay={handlePlayEpisode} 
           />
 
